@@ -1,107 +1,73 @@
 <template>
   <nav 
     :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-700',
+      'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
       isScrolled 
-        ? 'bg-white/98 backdrop-blur-2xl shadow-2xl border-b border-primary/10' 
-        : 'bg-white/95 backdrop-blur-lg shadow-md'
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100' 
+        : 'bg-white/80 backdrop-blur-md'
     ]"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20 lg:h-24">
-        <!-- Logo -->
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo - Minimalist -->
         <a 
           href="#" 
-          class="navbar-brand flex items-center transition-all duration-500 hover:scale-105 group relative"
+          class="flex items-center space-x-2 group transition-all duration-300"
           @click.prevent="scrollToTop"
         >
-          <div class="absolute -inset-2 bg-primary/10 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 flex items-center space-x-3">
+          <div class="relative">
+            <div class="absolute inset-0 bg-primary/10 rounded-lg blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <img 
-              class="h-12 w-auto transition-all duration-500 group-hover:drop-shadow-lg" 
+              class="h-10 w-10 lg:h-12 lg:w-12 relative z-10 transition-transform duration-300 group-hover:scale-110" 
               :src="logoImage" 
-              alt="Muzola Ethberg Logo" 
+              alt="Muzola Ethberg" 
             />
-            <div class="hidden sm:block">
-              <div class="text-lg font-bold text-gray-900">Muzola Ethberg</div>
-              <div class="text-xs text-gray-500">Développeur Web & Mobile</div>
-            </div>
+          </div>
+          <div class="hidden sm:block">
+            <div class="text-base lg:text-lg font-bold text-gray-900">Muzola Ethberg</div>
+            <div class="text-[10px] lg:text-xs text-gray-500 font-medium">Développeur Web & Mobile</div>
           </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center space-x-2">
-          <ul class="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-2xl p-2 border border-primary/10 shadow-lg">
-            <li v-for="item in navItems" :key="item.id">
-              <a 
-                :href="item.href" 
-                :class="[
-                  'nav-link relative px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-300 group',
-                  activeSection === item.id
-                    ? 'text-primary bg-primary/10'
-                    : 'text-gray-700 hover:text-primary hover:bg-primary/5'
-                ]"
-                @click.prevent="handleNavClick(item.href)"
-              >
-                <span class="relative z-10 flex items-center space-x-2">
-                  <span>{{ item.label }}</span>
-                  <span 
-                    v-if="activeSection === item.id"
-                    class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"
-                  ></span>
-                </span>
-                <span 
-                  v-if="activeSection === item.id"
-                  class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
-                ></span>
-              </a>
-            </li>
-          </ul>
+        <!-- Desktop Navigation - Clean Horizontal -->
+        <div class="hidden lg:flex items-center space-x-1">
+          <a 
+            v-for="item in navItems" 
+            :key="item.id"
+            :href="item.href" 
+            :class="[
+              'nav-item relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300',
+              activeSection === item.id
+                ? 'text-primary'
+                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+            ]"
+            @click.prevent="handleNavClick(item.href)"
+          >
+            {{ item.label }}
+            <span 
+              v-if="activeSection === item.id"
+              class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
+            ></span>
+          </a>
         </div>
 
-        <!-- Theme Toggle & Mobile Menu Button -->
+        <!-- Right Actions -->
         <div class="flex items-center space-x-3">
           <!-- CTA Button -->
           <a 
             href="#contact"
-            class="hidden lg:flex items-center space-x-2 px-6 py-2.5 bg-primary text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            class="hidden lg:flex items-center space-x-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-sm hover:shadow-md"
             @click.prevent="handleNavClick('#contact')"
           >
-            <span>Me contacter</span>
+            <span>Contact</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
 
-          <!-- Theme Toggle -->
-          <button
-            @click="toggleTheme"
-            class="p-2.5 rounded-xl text-gray-700 hover:bg-primary/10 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-            aria-label="Toggle theme"
-          >
-            <svg 
-              v-if="!isDarkMode" 
-              class="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-            <svg 
-              v-else 
-              class="w-5 h-5" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          </button>
-
           <!-- Mobile Menu Button -->
           <button
-            class="lg:hidden p-2.5 rounded-xl text-gray-700 hover:bg-primary/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            class="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300"
             type="button"
             @click="toggleMenu"
             aria-label="Toggle navigation"
@@ -109,7 +75,7 @@
           >
             <svg 
               v-if="!menuOpen" 
-              class="w-6 h-6 transition-transform duration-300" 
+              class="w-6 h-6" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -118,7 +84,7 @@
             </svg>
             <svg 
               v-else 
-              class="w-6 h-6 transition-transform duration-300 rotate-90" 
+              class="w-6 h-6" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -129,53 +95,42 @@
         </div>
       </div>
 
-      <!-- Mobile Navigation -->
+      <!-- Mobile Navigation - Slide Down -->
       <transition
         enter-active-class="transition-all duration-300 ease-out"
-        enter-from-class="opacity-0 max-h-0"
-        enter-to-class="opacity-100 max-h-96"
-        leave-active-class="transition-all duration-300 ease-in"
-        leave-from-class="opacity-100 max-h-96"
-        leave-to-class="opacity-0 max-h-0"
+        enter-from-class="opacity-0 -translate-y-4"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-4"
       >
         <div 
           v-show="menuOpen" 
-          class="lg:hidden overflow-hidden border-t border-primary/20 bg-white/98 backdrop-blur-xl mt-2 pt-6 pb-6"
+          class="lg:hidden border-t border-gray-100 bg-white/95 backdrop-blur-xl py-4"
         >
-          <ul class="flex flex-col space-y-3 px-4">
-            <li v-for="item in navItems" :key="item.id">
-              <a 
-                :href="item.href" 
-                :class="[
-                  'nav-link block px-6 py-4 rounded-xl text-base font-semibold transition-all duration-300 transform',
-                  activeSection === item.id
-                    ? 'text-white bg-primary shadow-lg border-l-4 border-secondary'
-                    : 'text-gray-700 hover:text-primary hover:bg-primary/10 hover:translate-x-2'
-                ]"
-                @click.prevent="handleNavClick(item.href)"
-              >
-                <span class="flex items-center justify-between">
-                  <span>{{ item.label }}</span>
-                  <span 
-                    v-if="activeSection === item.id"
-                    class="w-2 h-2 bg-secondary rounded-full animate-pulse"
-                  ></span>
-                  <svg v-else class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </a>
-            </li>
-            <li class="pt-4">
-              <a 
-                href="#contact"
-                class="block w-full px-6 py-4 bg-primary text-white rounded-xl text-center font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                @click.prevent="handleNavClick('#contact')"
-              >
-                Me contacter
-              </a>
-            </li>
-          </ul>
+          <div class="flex flex-col space-y-1">
+            <a 
+              v-for="item in navItems" 
+              :key="item.id"
+              :href="item.href" 
+              :class="[
+                'nav-item-mobile px-4 py-3 text-base font-medium rounded-lg transition-all duration-300',
+                activeSection === item.id
+                  ? 'text-primary bg-primary/10'
+                  : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+              ]"
+              @click.prevent="handleNavClick(item.href)"
+            >
+              {{ item.label }}
+            </a>
+            <a 
+              href="#contact"
+              class="mt-2 px-4 py-3 bg-primary text-white text-center text-base font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300"
+              @click.prevent="handleNavClick('#contact')"
+            >
+              Me contacter
+            </a>
+          </div>
         </div>
       </transition>
     </div>
@@ -186,7 +141,6 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const menuOpen = ref(false);
-const isDarkMode = ref(false);
 const isScrolled = ref(false);
 const activeSection = ref('');
 
@@ -211,17 +165,6 @@ const toggleMenu = () => {
 const closeMenu = () => {
   menuOpen.value = false;
   document.body.style.overflow = '';
-};
-
-const toggleTheme = () => {
-  isDarkMode.value = !isDarkMode.value;
-  if (isDarkMode.value) {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
 };
 
 const handleScroll = () => {
@@ -271,18 +214,9 @@ const scrollToTop = () => {
 };
 
 onMounted(() => {
-  // Load saved theme
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    isDarkMode.value = true;
-    document.documentElement.classList.add('dark');
-  }
-
-  // Handle scroll
   window.addEventListener('scroll', handleScroll);
   handleScroll();
 
-  // Close menu on resize
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) {
       closeMenu();
@@ -297,29 +231,29 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.nav-link {
+.nav-item {
   position: relative;
 }
 
-.nav-link::after {
+.nav-item::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--primary);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+  background: currentColor;
+  transition: width 0.3s ease;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 80%;
+.nav-item:hover::before,
+.nav-item.active::before {
+  width: 60%;
 }
 
 @media (max-width: 1023px) {
-  .nav-link::after {
+  .nav-item::before {
     display: none;
   }
 }
