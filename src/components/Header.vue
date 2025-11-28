@@ -105,7 +105,7 @@
             type="button"
             @click="toggleMenu"
             aria-label="Toggle navigation"
-            aria-expanded="menuOpen"
+            :aria-expanded="menuOpen"
           >
             <svg 
               v-if="!menuOpen" 
@@ -183,7 +183,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const menuOpen = ref(false);
 const isDarkMode = ref(false);
@@ -239,7 +239,7 @@ const updateActiveSection = () => {
 
   for (let i = sections.length - 1; i >= 0; i--) {
     const section = sections[i];
-    if (section.element) {
+    if (section && section.element) {
       const offsetTop = (section.element as HTMLElement).offsetTop;
       if (scrollPosition >= offsetTop) {
         activeSection.value = section.id;

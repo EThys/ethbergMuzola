@@ -165,10 +165,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const animatedItems = ['Ethberg Muzola', 'Développeur Web', 'Développeur Mobile', 'UI/UX Designer'];
-const currentIndex = ref(0);
 const displayedText = ref('');
 const isTyping = ref(true);
 let typingInterval: number | null = null;
@@ -197,6 +196,7 @@ const getParticleStyle = (index: number) => {
 
 const typeText = () => {
   const currentText = animatedItems[currentItemIndex];
+  if (!currentText) return;
   
   if (!isErasing && charIndex < currentText.length) {
     displayedText.value = currentText.substring(0, charIndex + 1);
@@ -212,8 +212,11 @@ const typeText = () => {
 };
 
 const eraseText = () => {
+  const currentText = animatedItems[currentItemIndex];
+  if (!currentText) return;
+  
   if (isErasing && charIndex > 0) {
-    displayedText.value = animatedItems[currentItemIndex].substring(0, charIndex - 1);
+    displayedText.value = currentText.substring(0, charIndex - 1);
     charIndex--;
     eraseInterval = window.setTimeout(eraseText, 50);
   } else if (isErasing && charIndex === 0) {
