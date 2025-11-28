@@ -1,11 +1,11 @@
 <template>
-  <section class="services-section relative py-20 lg:py-32 overflow-hidden" id="service">
+  <section class="services-section relative py-12 lg:py-16 overflow-hidden" id="service">
     <!-- Background Elements -->
     <div class="absolute inset-0 bg-white"></div>
     <div class="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-20 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
     
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-fade-in-up">
         <div class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-primary/10 mb-6">
@@ -14,11 +14,11 @@
           </svg>
           <span class="text-sm font-bold text-primary">Services</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 animate-fade-in-up">
           Mes 
           <span class="text-primary">Services</span>
         </h2>
-        <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-4">
+        <p class="text-base lg:text-lg text-gray-700 max-w-2xl mx-auto mb-4 animate-fade-in-up" style="animation-delay: 0.2s">
           Des solutions sur mesure pour répondre à tous vos besoins numériques
         </p>
         <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
@@ -29,8 +29,8 @@
         <div
           v-for="(service, index) in services"
           :key="index"
-          class="service-card group relative animate-fade-in-up"
-          :style="{ animationDelay: `${index * 0.1}s` }"
+          class="service-card group relative animate-zoom-in"
+          :style="{ animationDelay: `${index * 0.15}s` }"
         >
           <div class="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 transform hover:scale-105 h-full flex flex-col">
             <!-- Icon Container -->
@@ -44,7 +44,7 @@
 
             <!-- Content -->
             <div class="flex-1">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
+              <h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
                 {{ service.title }}
               </h3>
               <p class="text-gray-700 leading-relaxed">
