@@ -1,11 +1,11 @@
 <template>
-  <section class="contact-section relative py-20 lg:py-32 overflow-hidden" id="contact">
+  <section class="contact-section relative py-12 lg:py-16 overflow-hidden" id="contact">
     <!-- Background Elements -->
     <div class="absolute inset-0 bg-white"></div>
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"></div>
     
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
       <!-- Section Header -->
       <div class="text-center mb-16 animate-fade-in-up">
         <div class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-primary/10 mb-6">
@@ -14,11 +14,11 @@
           </svg>
           <span class="text-sm font-bold text-primary">Contact</span>
         </div>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 animate-fade-in-up">
           Travaillons 
           <span class="text-primary">Ensemble</span>
         </h2>
-        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        <p class="text-base lg:text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
           Je suis impatient de travailler avec vous pour créer des applications web et mobiles innovantes et de haute qualité
         </p>
         <div class="w-24 h-1 bg-primary mx-auto rounded-full mt-6"></div>
@@ -26,17 +26,17 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
         <!-- Contact Info -->
-        <div class="space-y-8 animate-fade-in-left">
+        <div class="space-y-8 animate-fade-in-left" style="animation-delay: 0.3s">
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Informations de contact</h3>
-            <p class="text-gray-700 mb-8">
+            <h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-6">Informations de contact</h3>
+            <p class="text-base lg:text-lg text-gray-700 mb-8">
               N'hésitez pas à me contacter pour discuter de votre projet. Je serai ravi de vous aider à concrétiser vos idées.
             </p>
           </div>
 
           <!-- Contact Cards -->
           <div class="space-y-4">
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 transform hover:scale-105 group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 transform hover:scale-105 group animate-scale-in" style="animation-delay: 0.4s">
               <div class="flex items-center space-x-4">
                 <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
                   <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@
               </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-secondary/10 hover:border-secondary/30 transition-all duration-300 transform hover:scale-105 group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-secondary/10 hover:border-secondary/30 transition-all duration-300 transform hover:scale-105 group animate-scale-in" style="animation-delay: 0.5s">
               <div class="flex items-center space-x-4">
                 <div class="w-14 h-14 bg-secondary rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
                   <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,7 +67,7 @@
               </div>
             </div>
 
-            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 transform hover:scale-105 group">
+            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-300 transform hover:scale-105 group animate-scale-in" style="animation-delay: 0.6s">
               <div class="flex items-center space-x-4">
                 <div class="w-14 h-14 bg-primary rounded-xl flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300">
                   <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@
         </div>
 
         <!-- Contact Form -->
-        <div class="animate-fade-in-right">
+        <div class="animate-fade-in-right" style="animation-delay: 0.3s">
           <form @submit.prevent="handleSubmit" class="bg-white rounded-3xl p-8 shadow-xl border-2 border-primary/10">
             <div class="space-y-6">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
