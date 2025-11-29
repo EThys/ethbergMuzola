@@ -91,7 +91,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label for="name" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                    Nom complet
+                    Nom complet *
                   </label>
                   <input
                     type="text"
@@ -104,7 +104,7 @@
                 </div>
                 <div>
                   <label for="email" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                    Email
+                    Email *
                   </label>
                   <input
                     type="email"
@@ -113,6 +113,18 @@
                     required
                     class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                     placeholder="votre@email.com"
+                  />
+                </div>
+                <div>
+                  <label for="phone" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
+                    Téléphone (optionnel)
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    v-model="form.phone"
+                    class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border-2 border-gray-200 rounded-lg sm:rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                    placeholder="+243 XXX XXX XXX"
                   />
                 </div>
               </div>
@@ -208,6 +220,7 @@ onMounted(() => {
 const form = ref({
   name: '',
   email: '',
+  phone: '',
   subject: '',
   message: '',
 });
@@ -222,7 +235,8 @@ const handleSubmit = async () => {
   submitError.value = null;
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/contact`, {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const response = await fetch(`${apiUrl}/api/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -231,6 +245,7 @@ const handleSubmit = async () => {
       body: JSON.stringify({
         name: form.value.name,
         email: form.value.email,
+        phone: form.value.phone || null,
         subject: form.value.subject,
         message: form.value.message,
         type: 'contact',
@@ -248,6 +263,7 @@ const handleSubmit = async () => {
     form.value = {
       name: '',
       email: '',
+      phone: '',
       subject: '',
       message: '',
     };

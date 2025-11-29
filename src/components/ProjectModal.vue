@@ -65,6 +65,20 @@
                     placeholder="votre@email.com"
                   />
                 </div>
+                
+                <!-- Phone -->
+                <div>
+                  <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
+                    Téléphone (optionnel)
+                  </label>
+                  <input
+                    id="phone"
+                    v-model="formData.phone"
+                    type="tel"
+                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+                    placeholder="+243 XXX XXX XXX"
+                  />
+                </div>
               </div>
 
               <!-- Subject -->
@@ -159,6 +173,7 @@ const { isModalOpen, closeModal } = useModal();
 const formData = ref({
   name: '',
   email: '',
+  phone: '',
   subject: '',
   message: '',
   budget: ''
@@ -174,7 +189,8 @@ const handleSubmit = async () => {
   submitError.value = null;
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/contact`, {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    const response = await fetch(`${apiUrl}/api/project-discussions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -183,10 +199,10 @@ const handleSubmit = async () => {
       body: JSON.stringify({
         name: formData.value.name,
         email: formData.value.email,
-        subject: formData.value.subject,
-        message: formData.value.message,
-        budget: formData.value.budget,
-        type: 'project',
+        phone: formData.value.phone || null,
+        project_title: formData.value.subject || 'Nouveau projet',
+        project_description: formData.value.message,
+        message: formData.value.message + (formData.value.budget ? `\n\nBudget estimé: ${formData.value.budget}` : ''),
       }),
     });
 
@@ -203,6 +219,7 @@ const handleSubmit = async () => {
     formData.value = {
       name: '',
       email: '',
+      phone: '',
       subject: '',
       message: '',
       budget: ''
