@@ -5,10 +5,10 @@
     <div class="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
     
-    <div class="container mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 relative z-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
         <!-- About -->
-        <div class="text-center md:text-left">
+        <div class="text-center md:text-left scroll-animate">
           <div class="flex items-center justify-center md:justify-start space-x-3 mb-4">
             <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
               <span class="text-white font-bold text-xl">ME</span>
@@ -24,7 +24,7 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="text-center md:text-left">
+        <div class="text-center md:text-left scroll-animate" style="animation-delay: 0.1s">
           <h3 class="text-white font-bold text-lg mb-6">Liens rapides</h3>
           <ul class="space-y-3">
             <li v-for="item in navItems" :key="item.id">
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Contact Info -->
-        <div class="text-center md:text-left">
+        <div class="text-center md:text-left scroll-animate" style="animation-delay: 0.2s">
           <h3 class="text-white font-bold text-lg mb-6">Contact</h3>
           <ul class="space-y-3">
             <li class="flex items-center justify-center md:justify-start space-x-3 text-gray-400">
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div class="border-t border-gray-800 pt-8">
+      <div class="border-t border-gray-800 pt-8 scroll-animate" style="animation-delay: 0.3s">
         <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           <p class="text-gray-400 text-sm text-center md:text-left">
             Copyright &copy; {{ currentYear }} Muzola Ethberg. Tous droits réservés.
@@ -86,8 +86,39 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 import { contactInfo } from '@/data/portfolio';
+
+// Scroll animations
+const setupScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  const elements = document.querySelectorAll('.scroll-animate');
+  elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+  };
+};
+
+onMounted(() => {
+  const cleanup = setupScrollAnimations();
+  onUnmounted(() => {
+    cleanup();
+  });
+});
 
 const navItems = [
   { id: 'about', href: '#about', label: 'À propos' },
@@ -98,4 +129,18 @@ const navItems = [
 
 const currentYear = computed(() => new Date().getFullYear());
 </script>
+
+<style scoped>
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 

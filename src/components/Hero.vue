@@ -52,6 +52,8 @@
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-2 px-4 sm:px-0 animate-bounce-in" style="animation-delay: 0.8s">
             <a
               href="#contact"
+
+              
               class="group inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 bg-primary text-white rounded-lg font-semibold text-sm sm:text-base shadow-sm hover:shadow-md hover:bg-primary/90 transition-all duration-300"
               @click.prevent="scrollToContact"
             >
