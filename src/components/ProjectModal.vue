@@ -100,31 +100,44 @@
               <!-- Budget (Optional) -->
               <div>
                 <label for="budget" class="block text-sm font-semibold text-gray-700 mb-2">
-                  Budget (optionnel)
+                  Budget estimé (optionnel)
                 </label>
                 <select
                   id="budget"
                   v-model="formData.budget"
                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
                 >
-                  <option value="">Sélectionnez un budget</option>
-                  <option value="< 1000">Moins de 1000$</option>
-                  <option value="1000-5000">1000$ - 5000$</option>
-                  <option value="5000-10000">5000$ - 10000$</option>
-                  <option value="> 10000">Plus de 10000$</option>
+                  <option value="">Sélectionnez une fourchette de budget</option>
+                  <option value="2000-5000">1 000$ - 5 000$</option>
+                  <option value="5000-10000">5 000$ - 10 000$</option>
+                  <option value="10000-20000">10 000$ - 20 000$</option>
+                  <option value="20000-50000">20 000$ - 50 000$</option>
+                  <option value="> 50000">Plus de 50 000$</option>
+                  <option value="a-discuter">À discuter selon le projet</option>
                 </select>
+                <p class="mt-2 text-xs text-gray-500">
+                  💡 Le budget varie selon la complexité et les fonctionnalités du projet. N'hésitez pas à choisir "À discuter" pour un devis personnalisé.
+                </p>
               </div>
 
               <!-- Submit Button -->
               <button
                 type="submit"
-                class="w-full group px-8 py-4 bg-primary text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                :disabled="isSubmitting"
+                class="w-full group px-8 py-4 bg-primary text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 <!-- Button Background Animation -->
                 <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 <span class="relative z-10 flex items-center justify-center space-x-2">
-                  <span>Envoyer le message</span>
-                  <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span v-if="!isSubmitting">Envoyer le message</span>
+                  <span v-else class="flex items-center space-x-2">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Envoi en cours...</span>
+                  </span>
+                  <svg v-if="!isSubmitting" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                   </svg>
                 </span>
@@ -151,19 +164,57 @@ const formData = ref({
   budget: ''
 });
 
-const handleSubmit = () => {
-  console.log('Form submitted:', formData.value);
-  alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-  
-  // Reset form and close modal
-  formData.value = {
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    budget: ''
-  };
-  closeModal();
+const isSubmitting = ref(false);
+const submitError = ref<string | null>(null);
+
+const handleSubmit = async () => {
+  if (isSubmitting.value) return;
+
+  isSubmitting.value = true;
+  submitError.value = null;
+
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/contact`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.value.name,
+        email: formData.value.email,
+        subject: formData.value.subject,
+        message: formData.value.message,
+        budget: formData.value.budget,
+        type: 'project',
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Une erreur est survenue lors de l\'envoi du message');
+    }
+
+    // Succès
+    alert(data.message || 'Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
+    
+    // Reset form and close modal
+    formData.value = {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+      budget: ''
+    };
+    closeModal();
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi du message:', error);
+    submitError.value = error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.';
+    alert(submitError.value);
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 
 // Handle ESC key to close modal
@@ -220,4 +271,5 @@ onUnmounted(() => {
   opacity: 0;
 }
 </style>
+
 
