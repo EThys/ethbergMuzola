@@ -53,8 +53,19 @@
 
         <!-- Right Actions -->
         <div class="flex items-center space-x-3">
+          <!-- Dashboard Link -->
+          <router-link
+            to="/dashboard"
+            class="hidden lg:flex items-center space-x-2 px-4 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium rounded-lg hover:bg-gray-50 transition-all duration-300"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            <span>Dashboard</span>
+          </router-link>
+          
           <!-- CTA Button -->
-          <a 
+          <a
             href="#contact"
             class="hidden lg:flex items-center space-x-2 px-5 py-2.5 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300 shadow-sm hover:shadow-md"
             @click.prevent="handleNavClick('#contact')"
@@ -123,6 +134,12 @@
             >
               {{ item.label }}
             </a>
+            <router-link
+              to="/dashboard"
+              class="px-4 py-3 text-gray-700 hover:text-primary hover:bg-gray-50 text-center text-base font-medium rounded-lg transition-all duration-300"
+            >
+              Dashboard
+            </router-link>
             <a 
               href="#contact"
               class="mt-2 px-4 py-3 bg-primary text-white text-center text-base font-semibold rounded-lg hover:bg-primary/90 transition-all duration-300"
