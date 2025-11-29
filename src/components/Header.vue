@@ -7,7 +7,7 @@
         : 'bg-white/80 backdrop-blur-md'
     ]"
   >
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-20">
       <div class="flex items-center justify-between h-16 lg:h-20">
         <!-- Logo - Minimalist -->
         <a 
