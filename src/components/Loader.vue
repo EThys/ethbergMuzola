@@ -35,13 +35,13 @@
           <!-- Orbiting Dots -->
           <div class="absolute inset-0 flex items-center justify-center">
             <div 
-              v-for="(dot, index) in 8" 
+              v-for="index in 8" 
               :key="index"
               class="absolute w-2 h-2 bg-primary rounded-full animate-orbital-dot"
               :style="{
-                '--dot-index': index,
+                '--dot-index': index - 1,
                 '--total-dots': 8,
-                transform: `rotate(${index * 45}deg) translateY(-80px)`,
+                transform: `rotate(${(index - 1) * 45}deg) translateY(-80px)`,
               }"
             ></div>
           </div>
