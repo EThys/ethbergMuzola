@@ -23,34 +23,31 @@
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#2563EB08_1px,transparent_1px),linear-gradient(to_bottom,#2563EB08_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
     </div>
     
-    <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-20 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 relative z-10">
       <!-- Section Header - Left Aligned with Button -->
-      <div class="text-left mb-12 lg:mb-16">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-          </svg>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Portfolio</span>
+      <div class="text-left mb-8 sm:mb-12 lg:mb-16">
+        <div class="inline-block mb-4 sm:mb-6 scroll-animate">
+          <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Portfolio</span>
         </div>
-        <div class="flex items-center justify-between gap-4 mb-4">
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight animate-fade-in-up">
+        <div class="flex items-center justify-between gap-4 mb-4 sm:mb-6">
+          <h2 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-900 leading-tight scroll-animate" style="animation-delay: 0.1s">
             Mes 
             <span class="text-primary relative">
               Derniers Projets
-              <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 transform scale-x-100"></span>
+              <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-primary/30 transform scale-x-100"></span>
             </span>
           </h2>
           
           <!-- Button "Discutons de votre projet" -->
           <button
             @click="openModal"
-            class="inline-flex items-center space-x-2 px-5 py-3 bg-primary text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group relative overflow-hidden animate-fade-in-right whitespace-nowrap"
+            class="inline-flex items-center space-x-2 px-4 sm:px-5 py-2.5 sm:py-3 bg-primary text-white rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group relative overflow-hidden scroll-animate whitespace-nowrap"
             style="animation-delay: 0.2s"
           >
             <!-- Button Background Animation -->
             <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            <span class="relative z-10 flex items-center space-x-2 text-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span class="relative z-10 flex items-center space-x-2">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
               <span class="hidden sm:inline">Discutons de votre projet</span>
@@ -58,7 +55,7 @@
             </span>
           </button>
         </div>
-        <p class="text-base lg:text-lg text-gray-600 max-w-2xl leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl leading-relaxed scroll-animate" style="animation-delay: 0.2s">
           Découvrez mes réalisations récentes, des projets web modernes et performants
         </p>
       </div>
@@ -68,8 +65,8 @@
         <div 
           v-for="(project, index) in projects" 
           :key="project.id"
-          class="project-card group relative animate-zoom-in"
-          :style="{ animationDelay: `${index * 0.15}s` }"
+          class="project-card group relative scroll-animate"
+          :style="{ animationDelay: `${index * 0.1}s` }"
         >
           <!-- Main Card - Compact Design -->
           <div class="relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl border border-gray-200 hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1">
@@ -87,15 +84,7 @@
               <!-- Gradient Overlay on Hover -->
               <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
-              <!-- Project Title Badge -->
-              <div class="absolute bottom-4 left-4 right-4">
-                <div class="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h3 class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors duration-300">
-                    {{ project.title }}
-                  </h3>
-                </div>
-              </div>
-              
+            
               <!-- View Icon -->
               <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div class="bg-primary text-white rounded-full p-2 shadow-lg">
@@ -155,10 +144,42 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue';
 import { projects } from '@/data/portfolio';
 import { useModal } from '@/composables/useModal';
 
 const { openModal } = useModal();
+
+// Scroll animations
+const setupScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  const elements = document.querySelectorAll('.scroll-animate');
+  elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+  };
+};
+
+onMounted(() => {
+  const cleanup = setupScrollAnimations();
+  onUnmounted(() => {
+    cleanup();
+  });
+});
 
 const handleImageError = (event: Event) => {
   const img = event.target as HTMLImageElement;
@@ -280,6 +301,18 @@ const handleImageError = (event: Event) => {
 
 .tech-tag {
   animation: fade-in-projects 0.6s ease-out both;
+}
+
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .animate-float-orb-projects-1 {

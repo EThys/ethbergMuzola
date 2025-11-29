@@ -25,23 +25,20 @@
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#2563EB08_1px,transparent_1px),linear-gradient(to_bottom,#2563EB08_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
     </div>
     
-    <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-20 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 relative z-10">
       <!-- Section Header - Left Aligned -->
       <div class="text-left mb-12 lg:mb-16">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Technologies</span>
+        <div class="inline-block mb-4 sm:mb-6 scroll-animate">
+          <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Technologies</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight animate-fade-in-up">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight scroll-animate" style="animation-delay: 0.1s">
           Mes 
           <span class="text-primary relative">
             Technologies
-            <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 transform scale-x-100"></span>
+            <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-primary/30 transform scale-x-100"></span>
           </span>
         </h2>
-        <p class="text-base lg:text-lg text-gray-600 max-w-2xl animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl leading-relaxed scroll-animate" style="animation-delay: 0.2s">
           Stack technique complet pour le développement web et mobile
         </p>
       </div>
@@ -51,21 +48,22 @@
         <div 
           v-for="(category, categoryIndex) in techCategories" 
           :key="category.name"
-          class="category-section"
+          class="category-section scroll-animate"
           :style="{ animationDelay: `${categoryIndex * 0.1}s` }"
         >
           <!-- Category Header -->
           <div class="flex items-center space-x-4 mb-6">
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500"
-                 :class="category.colorClass">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 scroll-animate"
+                 :class="category.colorClass"
+                 :style="{ animationDelay: `${categoryIndex * 0.1 + 0.05}s` }">
               <component :is="category.icon" class="w-6 h-6 text-white" />
             </div>
             <div>
-              <h3 class="text-xl lg:text-2xl font-bold text-gray-900 animate-fade-in-left" :style="{ animationDelay: `${categoryIndex * 0.1 + 0.1}s` }">
+              <h3 class="text-xl lg:text-2xl font-extrabold text-gray-900 scroll-animate" :style="{ animationDelay: `${categoryIndex * 0.1 + 0.1}s` }">
                 {{ category.name }}
               </h3>
             </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent ml-4"></div>
+            <div class="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent ml-4 scroll-animate" :style="{ animationDelay: `${categoryIndex * 0.1 + 0.15}s` }"></div>
           </div>
           
           <!-- Technologies List - Horizontal -->
@@ -73,7 +71,7 @@
             <div 
               v-for="(tech, techIndex) in category.techs"
               :key="tech.name"
-              class="tech-item group flex items-center space-x-3 px-4 py-3 rounded-xl bg-white border-2 border-gray-200 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-sm hover:shadow-md"
+              class="tech-item group flex items-center space-x-3 px-4 py-3 rounded-xl bg-white border-2 border-gray-200 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-sm hover:shadow-md scroll-animate"
               :style="{ animationDelay: `${(categoryIndex * 0.1) + (techIndex * 0.05)}s` }"
             >
               <!-- Tech Icon -->
@@ -104,7 +102,38 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h } from 'vue';
+import { computed, h, onMounted, onUnmounted } from 'vue';
+
+// Scroll animations
+const setupScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  const elements = document.querySelectorAll('.scroll-animate');
+  elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+  };
+};
+
+onMounted(() => {
+  const cleanup = setupScrollAnimations();
+  onUnmounted(() => {
+    cleanup();
+  });
+});
 
 // Define technology categories
 const techCategories = computed(() => [
@@ -339,6 +368,18 @@ const handleImageError = (event: Event) => {
 
 .tech-item {
   animation: fade-in-skills 0.6s ease-out both;
+}
+
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .animate-float-orb-skills-1 {

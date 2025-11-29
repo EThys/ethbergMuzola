@@ -22,23 +22,20 @@
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#2563EB08_1px,transparent_1px),linear-gradient(to_bottom,#2563EB08_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
     </div>
     
-    <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-20 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 relative z-10">
       <!-- Section Header - Left Aligned -->
-      <div class="text-left mb-12 lg:mb-16">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Parcours</span>
+      <div class="text-left mb-8 sm:mb-12 lg:mb-16">
+        <div class="inline-block mb-4 sm:mb-6 scroll-animate">
+          <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Parcours</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight animate-fade-in-up">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight scroll-animate" style="animation-delay: 0.1s">
           Expérience & 
           <span class="text-primary relative">
             Formation
-            <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 transform scale-x-100"></span>
+            <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-primary/30 transform scale-x-100"></span>
           </span>
         </h2>
-        <p class="text-base lg:text-lg text-gray-600 max-w-2xl animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl leading-relaxed scroll-animate" style="animation-delay: 0.2s">
           Mon parcours professionnel et académique
         </p>
       </div>
@@ -47,14 +44,14 @@
         <!-- Experiences Section -->
         <div class="relative">
           <!-- Section Header -->
-          <div class="flex items-center mb-8">
+          <div class="flex items-center mb-8 scroll-animate" style="animation-delay: 0.3s">
             <div class="flex items-center space-x-3">
               <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h2 class="text-xl lg:text-2xl font-bold text-gray-900 animate-fade-in-left">Expériences</h2>
+              <h2 class="text-xl lg:text-2xl font-extrabold text-gray-900">Expériences</h2>
             </div>
           </div>
 
@@ -63,8 +60,8 @@
             <div
               v-for="(exp, index) in experiences"
               :key="index"
-              class="timeline-item mb-10 relative group animate-fade-in-right"
-              :style="{ animationDelay: `${index * 0.15}s` }"
+              class="timeline-item mb-10 relative group scroll-animate"
+              :style="{ animationDelay: `${index * 0.1}s` }"
             >
               <!-- Year Badge -->
               <div class="timeline-year absolute -left-14 w-20 h-20 bg-primary text-white rounded-2xl flex items-center justify-center font-bold shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 z-10">
@@ -99,7 +96,7 @@
         <!-- Education Section -->
         <div class="relative">
           <!-- Section Header -->
-          <div class="flex items-center mb-8">
+          <div class="flex items-center mb-8 scroll-animate" style="animation-delay: 0.3s">
             <div class="flex items-center space-x-3">
               <div class="w-12 h-12 bg-primary/80 rounded-xl flex items-center justify-center transform hover:scale-110 transition-transform duration-300">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +105,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14v9M4 9v9a2 2 0 002 2h12a2 2 0 002-2V9" />
                 </svg>
               </div>
-              <h2 class="text-xl lg:text-2xl font-bold text-gray-900 animate-fade-in-left">Formation</h2>
+              <h2 class="text-xl lg:text-2xl font-extrabold text-gray-900">Formation</h2>
             </div>
           </div>
 
@@ -117,8 +114,8 @@
             <div
               v-for="(edu, index) in education"
               :key="index"
-              class="timeline-item mb-10 relative group animate-fade-in-right"
-              :style="{ animationDelay: `${index * 0.15}s` }"
+              class="timeline-item mb-10 relative group scroll-animate"
+              :style="{ animationDelay: `${index * 0.1}s` }"
             >
               <!-- Year Badge -->
               <div class="timeline-year absolute -left-14 w-20 h-20 bg-primary/80 text-white rounded-2xl flex items-center justify-center font-bold shadow-xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 z-10">
@@ -155,7 +152,39 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue';
 import { experiences, education } from '@/data/portfolio';
+
+// Scroll animations
+const setupScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  const elements = document.querySelectorAll('.scroll-animate');
+  elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+  };
+};
+
+onMounted(() => {
+  const cleanup = setupScrollAnimations();
+  onUnmounted(() => {
+    cleanup();
+  });
+});
 </script>
 
 <style scoped>
@@ -257,6 +286,18 @@ import { experiences, education } from '@/data/portfolio';
 
 .timeline-item {
   animation: fade-in-resume 0.8s ease-out both;
+}
+
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline-item::before {

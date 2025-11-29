@@ -6,40 +6,37 @@
     <!-- Animated Background Decorations -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <!-- Gradient Orbs -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-float-orb-testimonials-1"></div>
-      <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-float-orb-testimonials-2"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl animate-float-orb-testimonials-3"></div>
+      <div class="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-primary/15 rounded-full blur-3xl animate-float-orb-testimonials-1 hidden sm:block"></div>
+      <div class="absolute bottom-0 left-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 bg-primary/10 rounded-full blur-3xl animate-float-orb-testimonials-2 hidden sm:block"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px] bg-primary/5 rounded-full blur-3xl animate-float-orb-testimonials-3 hidden lg:block"></div>
       
       <!-- Geometric Shapes -->
-      <div class="absolute top-20 right-20 w-40 h-40 border-4 border-primary/20 rounded-3xl rotate-45 animate-rotate-slow-testimonials opacity-50"></div>
-      <div class="absolute bottom-32 left-20 w-32 h-32 border-4 border-primary/15 rounded-full animate-pulse-slow-testimonials opacity-50"></div>
+      <div class="absolute top-20 right-20 w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 border-4 border-primary/20 rounded-3xl rotate-45 animate-rotate-slow-testimonials opacity-50 hidden lg:block"></div>
+      <div class="absolute bottom-32 left-20 w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border-4 border-primary/15 rounded-full animate-pulse-slow-testimonials opacity-50 hidden lg:block"></div>
       
       <!-- Floating Particles -->
-      <div class="absolute top-1/4 right-1/4 w-3 h-3 bg-primary rounded-full animate-particle-testimonials-1"></div>
-      <div class="absolute top-1/2 left-1/4 w-2 h-2 bg-primary rounded-full animate-particle-testimonials-2"></div>
-      <div class="absolute bottom-1/4 right-1/3 w-2.5 h-2.5 bg-primary rounded-full animate-particle-testimonials-3"></div>
+      <div class="absolute top-1/4 right-1/4 w-2 h-2 sm:w-3 sm:h-3 bg-primary rounded-full animate-particle-testimonials-1 hidden sm:block"></div>
+      <div class="absolute top-1/2 left-1/4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-particle-testimonials-2 hidden sm:block"></div>
+      <div class="absolute bottom-1/4 right-1/3 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-primary rounded-full animate-particle-testimonials-3 hidden sm:block"></div>
       
       <!-- Code Grid Pattern -->
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,#2563EB08_1px,transparent_1px),linear-gradient(to_bottom,#2563EB08_1px,transparent_1px)] bg-[size:40px_40px] opacity-30"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,#2563EB08_1px,transparent_1px),linear-gradient(to_bottom,#2563EB08_1px,transparent_1px)] bg-[size:20px_20px] sm:bg-[size:30px_30px] lg:bg-[size:40px_40px] opacity-20 sm:opacity-30 hidden sm:block"></div>
     </div>
     
-    <div class="container mx-auto px-2 sm:px-4 lg:px-6 xl:px-20 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-20 relative z-10">
       <!-- Section Header -->
-      <div class="text-center mb-12 lg:mb-16">
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-          <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          <span class="text-xs font-bold text-primary uppercase tracking-wider">Témoignages</span>
+      <div class="text-left mb-8 sm:mb-12 lg:mb-16">
+        <div class="inline-block mb-4 sm:mb-6 scroll-animate">
+          <span class="text-xs font-medium text-gray-500 uppercase tracking-widest">Témoignages</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight animate-fade-in-up">
+        <h2 class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 leading-tight scroll-animate" style="animation-delay: 0.1s">
           Ce qu'ils disent de 
           <span class="text-primary relative">
             Moi
-            <span class="absolute -bottom-2 left-0 w-full h-1 bg-primary/30 transform scale-x-100"></span>
+            <span class="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-0.5 sm:h-1 bg-primary/30 transform scale-x-100"></span>
           </span>
         </h2>
-        <p class="text-base lg:text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s">
+        <p class="text-sm sm:text-base lg:text-lg text-gray-600 max-w-2xl leading-relaxed scroll-animate" style="animation-delay: 0.2s">
           Découvrez les retours de mes clients et collaborateurs
         </p>
       </div>
@@ -47,7 +44,7 @@
       <!-- Carousel Container -->
       <div class="relative max-w-5xl mx-auto">
         <!-- Carousel Wrapper -->
-        <div class="relative overflow-hidden rounded-3xl">
+        <div class="relative overflow-hidden rounded-2xl sm:rounded-3xl">
           <!-- Testimonials Track -->
           <div 
             class="flex transition-transform duration-500 ease-in-out"
@@ -56,37 +53,37 @@
             <div
               v-for="(testimonial, index) in testimonials"
               :key="testimonial.id"
-              class="min-w-full px-4 sm:px-8 lg:px-12 py-8 lg:py-12"
+              class="min-w-full px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-8 lg:py-12"
             >
-              <div class="testimonial-card bg-white rounded-3xl p-8 lg:p-12 shadow-2xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 relative overflow-hidden group animate-flip-in" :style="{ animationDelay: `${index * 0.2}s` }">
+              <div class="testimonial-card bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 xl:p-12 shadow-2xl border-2 border-primary/10 hover:border-primary/30 transition-all duration-500 relative overflow-hidden group scroll-animate" :style="{ animationDelay: `${index * 0.1}s` }">
                 <!-- Quote Icon -->
-                <div class="absolute top-8 right-8 w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center transform group-hover:rotate-12 group-hover:bg-primary transition-all duration-300">
-                  <svg class="w-10 h-10 text-primary group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                <div class="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-xl sm:rounded-2xl flex items-center justify-center transform group-hover:rotate-12 group-hover:bg-primary transition-all duration-300">
+                  <svg class="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary group-hover:text-white transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                   </svg>
                 </div>
 
                 <!-- Content -->
-                <div class="relative z-10 mb-8">
-                  <p class="text-base lg:text-lg text-gray-700 leading-relaxed italic">
+                <div class="relative z-10 mb-6 sm:mb-8 pr-12 sm:pr-16 lg:pr-20">
+                  <p class="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed italic">
                     "{{ testimonial.text }}"
                   </p>
                 </div>
 
                 <!-- Author -->
-                <div class="flex items-center space-x-4 pt-8 border-t-2 border-primary/10">
-                  <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                <div class="flex items-center space-x-3 sm:space-x-4 pt-6 sm:pt-8 border-t-2 border-primary/10">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg sm:text-xl shadow-lg transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                     {{ testimonial.author.charAt(0) }}
                   </div>
-                  <div>
-                    <h4 class="font-bold text-gray-900 text-xl mb-1">{{ testimonial.author }}</h4>
-                    <p class="text-gray-600 text-sm">{{ testimonial.role }}</p>
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-extrabold text-gray-900 text-base sm:text-lg lg:text-xl mb-1 truncate">{{ testimonial.author }}</h4>
+                    <p class="text-gray-600 text-xs sm:text-sm">{{ testimonial.role }}</p>
                   </div>
                 </div>
 
                 <!-- Decorative Elements -->
-                <div class="absolute bottom-0 left-0 w-32 h-32 bg-secondary/10 rounded-tr-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-0 left-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-secondary/10 rounded-tr-2xl sm:rounded-tr-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-primary/5 rounded-bl-2xl sm:rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:block"></div>
               </div>
             </div>
           </div>
@@ -95,34 +92,34 @@
         <!-- Navigation Buttons -->
         <button
           @click="previousTestimonial"
-          class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full shadow-xl border-2 border-primary/20 hover:border-primary hover:bg-primary text-primary hover:text-white transition-all duration-300 flex items-center justify-center group z-20"
+          class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 lg:-translate-x-8 xl:-translate-x-12 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 bg-white rounded-full shadow-xl border-2 border-primary/20 hover:border-primary hover:bg-primary text-primary hover:text-white transition-all duration-300 flex items-center justify-center group z-20"
           :disabled="currentIndex === 0"
           :class="{ 'opacity-50 cursor-not-allowed': currentIndex === 0 }"
         >
-          <svg class="w-6 h-6 lg:w-8 lg:h-8 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
         <button
           @click="nextTestimonial"
-          class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 w-12 h-12 lg:w-16 lg:h-16 bg-white rounded-full shadow-xl border-2 border-primary/20 hover:border-primary hover:bg-primary text-primary hover:text-white transition-all duration-300 flex items-center justify-center group z-20"
+          class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 lg:translate-x-8 xl:translate-x-12 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 bg-white rounded-full shadow-xl border-2 border-primary/20 hover:border-primary hover:bg-primary text-primary hover:text-white transition-all duration-300 flex items-center justify-center group z-20"
           :disabled="currentIndex === testimonials.length - 1"
           :class="{ 'opacity-50 cursor-not-allowed': currentIndex === testimonials.length - 1 }"
         >
-          <svg class="w-6 h-6 lg:w-8 lg:h-8 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 xl:w-8 xl:h-8 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
 
         <!-- Indicators -->
-        <div class="flex justify-center space-x-3 mt-8">
+        <div class="flex justify-center space-x-2 sm:space-x-3 mt-6 sm:mt-8">
           <button
             v-for="(testimonial, index) in testimonials"
             :key="testimonial.id"
             @click="goToTestimonial(index)"
-            class="w-3 h-3 rounded-full transition-all duration-300"
-            :class="currentIndex === index ? 'bg-primary w-8' : 'bg-primary/30 hover:bg-primary/50'"
+            class="w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300"
+            :class="currentIndex === index ? 'bg-primary w-6 sm:w-8' : 'bg-primary/30 hover:bg-primary/50'"
             :aria-label="`Aller au témoignage ${index + 1}`"
           ></button>
         </div>
@@ -173,12 +170,37 @@ const stopAutoPlay = () => {
   }
 };
 
+// Scroll animations
+const setupScrollAnimations = () => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  const elements = document.querySelectorAll('.scroll-animate');
+  elements.forEach((el) => observer.observe(el));
+
+  return () => {
+    elements.forEach((el) => observer.unobserve(el));
+  };
+};
+
 onMounted(() => {
   startAutoPlay();
-});
-
-onUnmounted(() => {
-  stopAutoPlay();
+  const cleanup = setupScrollAnimations();
+  onUnmounted(() => {
+    stopAutoPlay();
+    cleanup();
+  });
 });
 </script>
 
@@ -309,5 +331,17 @@ onUnmounted(() => {
 
 .animate-particle-testimonials-3 {
   animation: particle-testimonials-3 8s ease-in-out infinite 2s;
+}
+
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
