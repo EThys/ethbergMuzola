@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="min-h-screen bg-white">
+    <Loader />
     <Header />
     <Hero />
     <About />
@@ -15,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import Loader from './components/Loader.vue';
 import Header from './components/Header.vue';
 import Hero from './components/Hero.vue';
 import About from './components/About.vue';
