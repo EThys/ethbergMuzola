@@ -3,6 +3,7 @@ export const API_CONFIG = {
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
   endpoints: {
     contact: '/api/contact',
+    projectDiscussions: '/api/project-discussions',
   },
   timeout: 10000, // 10 secondes
 };
@@ -13,19 +14,32 @@ export async function apiRequest<T>(
   options: RequestInit = {}
 ): Promise<T> {
   const url = `${API_CONFIG.baseURL}${endpoint}`;
+
+  // Get auth token from localStorage
+  const token = localStorage.getItem('auth_token');
   
   const defaultOptions: RequestInit = {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+      ...(options.headers || {}),
     },
     ...options,
   };
 
   try {
     const response = await fetch(url, defaultOptions);
-    
+
     if (!response.ok) {
+      // If unauthorized, redirect to login
+      if (response.status === 401) {
+        localStorage.removeItem('auth_token');
+        if (window.location.pathname !== '/login') {
+          window.location.href = '/login';
+        }
+      }
+      
       const errorData = await response.json().catch(() => ({
         message: 'Une erreur est survenue',
       }));
